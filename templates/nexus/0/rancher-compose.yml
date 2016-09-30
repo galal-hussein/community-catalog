@@ -1,0 +1,4 @@
+.catalog:
+  name: "Nexus"
+  version: "v3"
+  description: "Nexus Repository Manager based on CentOS"
