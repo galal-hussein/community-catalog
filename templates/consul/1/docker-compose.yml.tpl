@@ -27,3 +27,13 @@ consul:
     io.rancher.sidekicks: consul-base,consul-data
   volumes_from:
     - consul-data
+{{- if eq .Values.ui "true"}}
+consul-lb:
+  expose:
+  - 8500:8500/tcp
+  tty: true
+  image: rancher/load-balancer-service
+  links:
+  - consul:consul-base
+  stdin_open: true
+{{- end }}
