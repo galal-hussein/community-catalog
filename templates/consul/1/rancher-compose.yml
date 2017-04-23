@@ -61,7 +61,7 @@
       label: "ACL Master Token"
       type: "string"
       default: ""
-      required: true
+      required: false
     - variable: ui
       label: "Enable UI"
       type: "boolean"
@@ -84,6 +84,7 @@ consul:
             ${consul3_crt}
     consul3.key: |
             ${consul3_key}
+    enc.key: "${gossip_key}"
     acl.enabled: "${enable_acl}"
     acl.default_policy: "${acl_default_policy}"
     acl.down_policy: "${acl_down_policy}"
