@@ -29,6 +29,8 @@ consul:
     - consul-data
 {{- if eq .Values.ui "true"}}
 consul-lb:
+  ports:
+  - 8500:8500/tcp
   expose:
   - 8500:8500/tcp
   tty: true
