@@ -36,6 +36,37 @@
       label: "Communication gossip key"
       type: "multiline"
       required: true
+    - variable: enable_acl
+      label: "ACL Access"
+      type: "boolean"
+      required: true
+      default: false
+    - variable: acl_default_policy
+      label: "ACL Default Policy"
+      type: "enum"
+      options:
+        - "allow"
+        - "deny"
+      default: "allow"
+      required: true
+    - variable: acl_down_policy
+      label: "ACL Down Policy"
+      type: "enum"
+      options:
+        - "allow"
+        - "deny"
+      default: "allow"
+      required: true
+    - variable: acl_master_token
+      label: "ACL Master Token"
+      type: "string"
+      default: ""
+      required: true
+    - variable: ui
+      label: "Enable UI"
+      type: "boolean"
+      default: false
+      required: true
 consul:
   scale: 3
   metadata:
@@ -53,4 +84,8 @@ consul:
             ${consul3_crt}
     consul3.key: |
             ${consul3_key}
-    enc.key: "${gossip_key}"
+    acl.enabled: "${enable_acl}"
+    acl.default_policy: "${acl_default_policy}"
+    acl.down_policy: "${acl_down_policy}"
+    acl.master_token: "${acl_master_token}"
+    ui.enabled: ${ui}
