@@ -21,9 +21,21 @@ consul-data:
     - /opt/rancher/config
   net: none
 consul:
-  image: husseingalal/consul-config:0.1.1
+  image: husseingalal/consul-config:0.1.2
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: consul-base,consul-data
   volumes_from:
     - consul-data
+{{- if eq .Values.ui "true"}}
+consul-lb:
+  ports:
+  - 8500:8500/tcp
+  expose:
+  - 8500:8500/tcp
+  tty: true
+  image: rancher/load-balancer-service
+  links:
+  - consul:consul-base
+  stdin_open: true
+{{- end }}
