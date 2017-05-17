@@ -3,6 +3,7 @@ mongo-cluster:
   environment:
     MONGO_SERVICE_NAME: mongo-cluster
     CATTLE_SCRIPT_DEBUG: ${debug}
+    MONGO_REPLSET: ${replset_name}
   entrypoint: /opt/rancher/bin/entrypoint.sh
   command:
   - --replSet
