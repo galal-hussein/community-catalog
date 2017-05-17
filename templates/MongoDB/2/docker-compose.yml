@@ -22,7 +22,7 @@ mongo-base:
     io.rancher.scheduler.affinity:host_label: ${host_label}
     io.rancher.container.hostname_override: container_name
     io.rancher.container.start_once: true
-  image: rancher/mongodb-conf:v0.1.1
+  image: husseingalal/mongodb-conf:v0.1.2
   stdin_open: true
   entrypoint: /bin/true
 mongo-datavolume:
